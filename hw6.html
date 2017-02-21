@@ -1,0 +1,103 @@
+<html>
+    <style>
+   #title{display: flex;justify-content: center;font-size: 50px;color:black} 
+   .topping{display: flex;justify-content: space-between;font-size: 30px}
+   .total{display: flex;justify-content: space-between;font-size: 20px}
+   .clear{display: flex;justify-content: flex-end;font-size: 20px}
+   .hide{display: flex;justify-content: flex-end;font-size: 20px;color:lightgray}
+   .receipt{display: flex;justify-content: center;font-size: 30px;color:black}
+   </style>
+   <head>
+   <script type="text/javascript">   
+    var countA = 0;
+    var countB = 0;
+	var countC = 0;
+	var counterA = 0;
+	var counterB =0;
+	var counterC =0;
+	
+	function Pepperoni()
+    {
+		countA += 1.5;
+		counterA++;
+		document.getElementById('para1').innerHTML = "$"+countA;
+	}
+    function Steak()
+    {
+		countB += 2;
+		counterB++;
+		document.getElementById('para2').innerHTML = "$"+countB;
+	}
+    function Cheese()
+    {
+		countC += 0.5;
+		counterC++;
+		document.getElementById('para3').innerHTML = "$"+countC;
+	}
+    function total()
+    {
+		var total = 0;
+		total = countA+countB+countC;
+        tax = total*0.05
+        taxx = tax.toPrecision(3);
+        sum = total + tax
+		document.getElementById('total').innerHTML = "$"+total;
+        document.getElementById('taxx').innerHTML = "$"+tax;
+        document.getElementById('sum').innerHTML = "$"+sum;
+	}
+    function Clear()
+	{
+		countA = 0;
+		countB = 0;
+		countC = 0;
+		counterA = 0;
+		counterB = 0;
+		counterC = 0;
+		document.getElementById('para1').innerHTML = "$"+0;
+		document.getElementById('para2').innerHTML = "$"+0;
+		document.getElementById('para3').innerHTML = "$"+0;
+		document.getElementById('total').innerHTML = "$"+0;
+	}
+	function Order()
+	{
+		var topping = document.getElementById("order").value;
+		var Order = topping.split(",");
+		
+		for (var i = 0; i < Order.length; i++){
+		Order[i] = Order[i].trim();
+		}
+		
+		if(Order== "Pepperoni"){
+			Pepperoni();
+		}
+		else if(Order == "Steak"){
+			Steak();
+		}
+		else if(Order == "Cheese"){
+			Cheese();
+		}
+	}
+	
+	
+   </script>
+   </head>
+    <body bgcolor="lightgrey">
+        <title>Pizza Menu</title>
+        <p id="title">Pizza Ordering Menu</p>
+        <p class="topping"><a> Pepperoni</a><img src="http://i.imgur.com/d7cksBz.jpg?3" title="source: imgur.com" /><a id="para1">$0</a> <button onclick="Pepperoni()">Add</button> </p>
+        <p class="topping"><a> Steak</a><img src="http://i.imgur.com/asgyUX1.jpg?3" title="source: imgur.com" /><a id="para2">$0</a> <button onclick="Steak()">Add</button> </p>
+        <p class="topping"><a> Cheese</a><img src="http://i.imgur.com/9PooMdr.jpg?2" title="source: imgur.com" /><a id="para3">$0</a> <button onclick="Cheese()">Add</button> </p>
+		<p class="topping"><a> Type-in topping </a> 
+        <ul>
+		<li>Pepperoni</li>
+		<li>Steak</li>
+		<li>Cheese</li>
+        </ul>
+        <input id="order"/><button onclick="Order()">Submit</button>
+        <p class="receipt">Receipt</p>
+        <p class="topping"><a> Subtotal</a> <a id="total">$0</a><a class="hide">_________</a>
+        <p class="topping"><a> Tax (5%)</a> <a id="taxx">$0</a><a class="hide">__________</a>
+        <p class="topping"><a> Total</a> <a id="sum">$0</a><button onclick="total()">Update</button> </p>
+        <p class="clear"> <button onclick="Clear()">Clear</button></p>
+    </body>
+</html>
