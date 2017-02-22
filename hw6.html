@@ -12,51 +12,47 @@
     var countA = 0;
     var countB = 0;
 	var countC = 0;
-	var counterA = 0;
-	var counterB =0;
-	var counterC =0;
-	
 	function Pepperoni()
     {
 		countA += 1.5;
-		counterA++;
 		document.getElementById('para1').innerHTML = "$"+countA;
 	}
     function Steak()
     {
 		countB += 2;
-		counterB++;
 		document.getElementById('para2').innerHTML = "$"+countB;
 	}
     function Cheese()
     {
 		countC += 0.5;
-		counterC++;
 		document.getElementById('para3').innerHTML = "$"+countC;
 	}
     function total()
     {
 		var total = 0;
+		var tax = 0;
+		var sum = 0;
 		total = countA+countB+countC;
         tax = total*0.05
-        taxx = tax.toPrecision(3);
         sum = total + tax
 		document.getElementById('total').innerHTML = "$"+total;
-        document.getElementById('taxx').innerHTML = "$"+tax;
-        document.getElementById('sum').innerHTML = "$"+sum;
+		document.getElementById('tax').innerHTML = "$"+tax;
+		document.getElementById('sum').innerHTML = "$"+sum;
 	}
     function Clear()
 	{
 		countA = 0;
 		countB = 0;
 		countC = 0;
-		counterA = 0;
-		counterB = 0;
-		counterC = 0;
+		total = 0;
+		tax = 0;
+		sum = 0;
 		document.getElementById('para1').innerHTML = "$"+0;
 		document.getElementById('para2').innerHTML = "$"+0;
 		document.getElementById('para3').innerHTML = "$"+0;
 		document.getElementById('total').innerHTML = "$"+0;
+		document.getElementById('tax').innerHTML = "$"+0;
+		document.getElementById('sum').innerHTML = "$"+0;
 	}
 	function Order()
 	{
@@ -96,7 +92,7 @@
         <input id="order"/><button onclick="Order()">Submit</button>
         <p class="receipt">Receipt</p>
         <p class="topping"><a> Subtotal</a> <a id="total">$0</a><a class="hide">_________</a>
-        <p class="topping"><a> Tax (5%)</a> <a id="taxx">$0</a><a class="hide">__________</a>
+        <p class="topping"><a> Tax (5%)</a> <a id="tax">$0</a><a class="hide">__________</a>
         <p class="topping"><a> Total</a> <a id="sum">$0</a><button onclick="total()">Update</button> </p>
         <p class="clear"> <button onclick="Clear()">Clear</button></p>
     </body>
